@@ -14,11 +14,14 @@ import java.util.Scanner;
 import java.util.Stack;
 
 /**
+ * Your sort-of "manager" for command pools. You need one and only one of these
+ * to power your CLI.
  *
  * @author T0astBread
  */
 public class CLI implements CommandPool
 {
+
     private Scanner sc;
     private Stack<CommandPool> commandPools;
     private List<Method> commands;
@@ -29,6 +32,15 @@ public class CLI implements CommandPool
         this.commandPools = new Stack<>();
     }
 
+    /**
+     * Loads the given pool into this CLI and starts it, blocking the thread
+     * that called this method. The new command pool is put on top of the
+     * command pool stack and will be the current one until it exits. The old
+     * command pools will, however, remain in their correct starting order
+     * inside the command pool stack.
+     *
+     * @param commands
+     */
     public void start(CommandPool commands)
     {
         this.commandPools.push(commands);
@@ -106,6 +118,10 @@ public class CLI implements CommandPool
         return meth.getDeclaringClass().getName().equals(this.getClass().getName()) ? this : this.commandPools.peek();
     }
 
+    /**
+     * Unloads and reloads the commands from the current command pool. This
+     * method is usually not needed.
+     */
     public void updateCommands()
     {
         this.commands = new LinkedList<>();
@@ -197,11 +213,19 @@ public class CLI implements CommandPool
         System.out.println(getPoolName());
     }
 
+    /**
+     * 
+     * @return the simple class name of the current command pool
+     */
     public String getPoolName()
     {
         return this.commandPools.peek().getClass().getSimpleName();
     }
 
+    /**
+     * 
+     * @return the commands that are ready for being executed right now
+     */
     public List<Method> getCommands()
     {
         return this.commands;
@@ -220,6 +244,10 @@ public class CLI implements CommandPool
         }
     }
 
+    /**
+     * 
+     * @return the internal scanner of this CLI
+     */
     public Scanner getScanner()
     {
         return this.sc;
