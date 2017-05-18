@@ -10,7 +10,7 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- *
+ * Convenience methods that could also be used outside of a CLl environment if it fits.
  * @author T0astBread
  */
 public class Utils
