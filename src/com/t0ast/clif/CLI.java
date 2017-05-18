@@ -14,8 +14,8 @@ import java.util.Scanner;
 import java.util.Stack;
 
 /**
- * Your sort-of "manager" for command pools. You need one and only one of these
- * to power your CLI.
+ * A sort-of "manager" for command pools. One of these is needed to power a
+ * command line interface to power your CLI.
  *
  * @author T0astBread
  */
@@ -214,7 +214,7 @@ public class CLI implements CommandPool
     }
 
     /**
-     * 
+     *
      * @return the simple class name of the current command pool
      */
     public String getPoolName()
@@ -223,7 +223,7 @@ public class CLI implements CommandPool
     }
 
     /**
-     * 
+     *
      * @return the commands that are ready for being executed right now
      */
     public List<Method> getCommands()
@@ -245,7 +245,7 @@ public class CLI implements CommandPool
     }
 
     /**
-     * 
+     *
      * @return the internal scanner of this CLI
      */
     public Scanner getScanner()
