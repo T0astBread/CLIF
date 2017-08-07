@@ -153,7 +153,7 @@ public class CLI implements CommandPool
             }
             else
             {
-                System.out.println("  " + Utils.join(meth.getAnnotation(CommandPool.Command.class).arguments(), "  "));
+                System.out.println(" " + Utils.join(meth.getAnnotation(CommandPool.Command.class).arguments(), " "));
             }
         }
         System.out.println("exit");
