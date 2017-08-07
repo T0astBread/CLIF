@@ -14,3 +14,10 @@ hs_err_pid*
 nbproject/private/
 
 dist/javadoc/
+/.nb-gradle/
+
+# Gradle
+.gradle
+/build/
+.gradletasknamecache
+!gradle-wrapper.jar
